@@ -1,1 +1,18 @@
 *.DS_Store
+
+# Ignore all files and subdirectories within bin/
+bin/
+
+# Ignore IDE-specific files and directories
+.idea/
+*.iml
+
+# Ignore build-related files
+build/
+.gradle/
+
+# Ignore log files
+*.log
+
+# Ignore any sensitive or environment-specific files
+.env

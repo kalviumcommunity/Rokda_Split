@@ -29,6 +29,7 @@ public class Rokda_Split {
         Payment payment1 = new Payment(2001, user2, user1, 25.0);
         Payment payment2 = new Payment(2002, user3, user2, 40.0);
 
+        System.out.println("Compiled Successfully!");
         // Perform calculations and update payments as needed
         // ...
 
