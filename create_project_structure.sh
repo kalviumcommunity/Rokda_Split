@@ -13,6 +13,15 @@ mkdir -p "$project_dir/docs"
 mkdir -p "$project_dir/config"
 mkdir -p "$project_dir/build"
 
+# Create .gitkeep file to keep the directories in Git
+touch "$project_dir/src/test/.gitkeep"
+touch "$project_dir/lib/.gitkeep"
+touch "$project_dir/bin/.gitkeep"
+touch "$project_dir/data/.gitkeep"
+touch "$project_dir/docs/.gitkeep"
+touch "$project_dir/config/.gitkeep"
+touch "$project_dir/build/.gitkeep"
+
 # Create sample Java source files
 touch "$project_dir/src/main/java/User.java"
 touch "$project_dir/src/main/java/Expense.java"
