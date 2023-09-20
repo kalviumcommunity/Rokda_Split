@@ -14,4 +14,35 @@ public class Expense {
     }
 
     // Getters for attributes
+    public int getExpenseId() {
+        return expenseId;
+    }
+
+    public void setExpenseId(int expenseId) {
+        this.expenseId = expenseId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public User getPaidBy() {
+        return paidBy;
+    }
+
+    public void setPaidBy(User paidBy) {
+        this.paidBy = paidBy;
+    }
 }

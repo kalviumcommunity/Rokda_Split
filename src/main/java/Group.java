@@ -16,6 +16,7 @@ public class Group {
         this.expenses = new ArrayList<>();
     }
 
+    // Getters for attributes
     public void addMember(User user) {
         members.add(user);
     }
@@ -24,5 +25,27 @@ public class Group {
         expenses.add(expense);
     }
 
-    // Getters for attributes
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<User> getMembers() {
+        return members;
+    }
+
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
 }

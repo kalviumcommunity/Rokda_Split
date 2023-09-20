@@ -16,9 +16,36 @@ public class User {
         this.groups = new ArrayList<>();
     }
 
+    // Getters and setters for attributes
     public void joinGroup(Group group) {
         groups.add(group);
     }
 
-    // Getters and setters for attributes
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
 }
