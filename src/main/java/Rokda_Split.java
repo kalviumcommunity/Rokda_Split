@@ -17,9 +17,9 @@ public class Rokda_Split {
         user2.joinGroup(group2);
         user3.joinGroup(group2);
 
-        // Create expense objects
-        Expense expense1 = new Expense(1001, "Gasoline", 50.0, user1);
-        Expense expense2 = new Expense(1002, "Dinner bill", 80.0, user2);
+        // Create expense objects with the correct group reference
+        Expense expense1 = new Expense(1001, "Gasoline", 50.0, user1, group1);
+        Expense expense2 = new Expense(1002, "Dinner bill", 80.0, user2, group2);
 
         // Add expenses to groups
         group1.addExpense(expense1);

@@ -5,15 +5,21 @@ public class Expense {
     private String description;
     private double amount;
     private User paidBy;
+    private Group group;
 
-    public Expense(int expenseId, String description, double amount, User paidBy) {
+    public Expense(int expenseId, String description, double amount, User paidBy, Group group) {
         this.expenseId = expenseId;
         this.description = description;
         this.amount = amount;
         this.paidBy = paidBy;
+        this.group = group;
     }
 
-    // Getters for attributes
+    // Getter method for Group
+    public Group getGroup() {
+        return group;
+    }
+
     public int getExpenseId() {
         return expenseId;
     }
