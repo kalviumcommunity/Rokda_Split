@@ -27,10 +27,10 @@ touch "$project_dir/src/main/java/User.java"
 touch "$project_dir/src/main/java/Expense.java"
 touch "$project_dir/src/main/java/Group.java"
 touch "$project_dir/src/main/java/Payment.java"
-touch "$project_dir/src/main/java/MoneySplittingApp.java"
+touch "$project_dir/src/main/java/Rokda_Split.java"
 
 # Make the script executable
-chmod +x "$project_dir/src/main/java/MoneySplittingApp.java"
+chmod +x "$project_dir/src/main/java/Rokda_Split.java"
 
 echo "Project structure created successfully in '$project_dir'."
 
