@@ -7,20 +7,14 @@ public class User {
     private int userId;
     private String name;
     private String email;
-    private List<Group> groups;
 
     public User(int userId, String name, String email) {
         this.userId = userId;
         this.name = name;
         this.email = email;
-        this.groups = new ArrayList<>();
     }
 
-    // Getters and setters for attributes
-    public void joinGroup(Group group) {
-        groups.add(group);
-    }
-
+    // Getters and setters for attribute
     public int getUserId() {
         return userId;
     }
@@ -43,9 +37,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
     }
 }
