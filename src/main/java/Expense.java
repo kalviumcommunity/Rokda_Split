@@ -19,7 +19,6 @@ public class Expense {
         this.paidBy = paidBy;
         this.group = group;
         this.benefactors = new ArrayList<>();
-        this.individualShare = calculateIndividualShare();
     }
 
     public int getExpenseId() {
@@ -71,7 +70,7 @@ public class Expense {
     }
 
     public double getIndividualShare() {
-        return individualShare;
+        return individualShare = calculateIndividualShare();
     }
 
     public double calculateIndividualShare() {

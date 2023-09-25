@@ -1,5 +1,7 @@
 package src.main.java;
 
+import java.util.Arrays;
+
 public class Rokda_Split {
     public static void main(String[] args) {
         // Create user objects
@@ -8,32 +10,54 @@ public class Rokda_Split {
         User user3 = new User(3, "Charlie", "charlie@example.com");
 
         // Create group objects
-        Group group1 = new Group(101, "Trip to Beach");
-        Group group2 = new Group(102, "Dinner Party");
+        Group cafeGroup = new Group(101, "Chill at cafe");
 
         // Add users to groups
-        user1.joinGroup(group1);
-        user2.joinGroup(group1);
-        user2.joinGroup(group2);
-        user3.joinGroup(group2);
+        cafeGroup.addMember(user1);
+        cafeGroup.addMember(user2);
+        cafeGroup.addMember(user3);
 
         // Create expense objects with the correct group reference
-        Expense expense1 = new Expense(1001, "Gasoline", 50.0, user1, group1);
-        Expense expense2 = new Expense(1002, "Dinner bill", 80.0, user2, group2);
+        Expense expense1 = new Expense(1001, "Cold Coffee", 150.0, user1, cafeGroup);
+        expense1.addBenefactor(user1);
+
+        Expense expense2 = new Expense(1002, "Coffee", 120.0, user1, cafeGroup);
+        expense2.addBenefactor(user2);
+
+        Expense expense3 = new Expense(1003, "Tea", 50.0, user1, cafeGroup);
+        expense3.addBenefactor(user3);
+
+        Expense expense4 = new Expense(1003, "Ice Cream", 100.0, user2, cafeGroup);
+        expense4.addBenefactor(user2);
+        expense4.addBenefactor(user3);
 
         // Add expenses to groups
-        group1.addExpense(expense1);
-        group2.addExpense(expense2);
-
-        // Create payment objects to settle debts
-        Payment payment1 = new Payment(2001, user2, user1, 25.0);
-        Payment payment2 = new Payment(2002, user3, user2, 40.0);
+        cafeGroup.addExpense(expense1);
+        cafeGroup.addExpense(expense2);
+        cafeGroup.addExpense(expense3);
 
         System.out.println("Compiled Successfully!");
-        // Perform calculations and update payments as needed
-        // ...
 
-        // Print user, group, and payment details
-        // ...
+        // Calculate individual shares for each expense
+        for (Expense expense : Arrays.asList(expense1, expense2)) {
+            expense.calculateIndividualShare();
+        }
+
+        // Print user, group, and expense details
+        System.out.println("Users: " + Arrays.asList(user1, user2, user3));
+        System.out.println("Group 1: " + cafeGroup.getName() + ", Members: " + cafeGroup.getMembers() + ", Expenses: "
+                + cafeGroup.getExpenses());
+        System.out.println("Expense 1: " + expense1.getDescription() + ", Paid by: " + expense1.getPaidBy().getName()
+                + ", Benefactors: " + expense1.getBenefactors() + ", Individual share: "
+                + expense1.getIndividualShare());
+        System.out.println("Expense 2: " + expense2.getDescription() + ", Paid by: " + expense2.getPaidBy().getName()
+                + ", Benefactors: " + expense2.getBenefactors() + ", Individual share: "
+                + expense2.getIndividualShare());
+        System.out.println("Expense 3: " + expense3.getDescription() + ", Paid by: " + expense3.getPaidBy().getName()
+                + ", Benefactors: " + expense3.getBenefactors() + ", Individual share: "
+                + expense3.getIndividualShare());
+        System.out.println("Expense 4: " + expense4.getDescription() + ", Paid by: " + expense4.getPaidBy().getName()
+                + ", Benefactors: " + expense4.getBenefactors() + ", Individual share: "
+                + expense4.getIndividualShare());
     }
 }
