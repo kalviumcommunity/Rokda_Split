@@ -35,6 +35,7 @@ public class Rokda_Split {
                 cafeGroup.addExpense(expense1);
                 cafeGroup.addExpense(expense2);
                 cafeGroup.addExpense(expense3);
+                cafeGroup.addExpense(expense4);
 
                 // Calculate individual shares for each expense
                 for (Expense expense : Arrays.asList(expense1, expense2)) {
