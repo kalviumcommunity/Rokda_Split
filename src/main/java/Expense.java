@@ -1,11 +1,16 @@
 package src.main.java;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Expense {
     private int expenseId;
     private String description;
     private double amount;
     private User paidBy;
     private Group group;
+    private List<User> benefactors;
+    private double individualShare;
 
     public Expense(int expenseId, String description, double amount, User paidBy, Group group) {
         this.expenseId = expenseId;
@@ -13,11 +18,8 @@ public class Expense {
         this.amount = amount;
         this.paidBy = paidBy;
         this.group = group;
-    }
-
-    // Getter method for Group
-    public Group getGroup() {
-        return group;
+        this.benefactors = new ArrayList<>();
+        this.individualShare = calculateIndividualShare();
     }
 
     public int getExpenseId() {
@@ -50,5 +52,29 @@ public class Expense {
 
     public void setPaidBy(User paidBy) {
         this.paidBy = paidBy;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public List<User> getBenefactors() {
+        return benefactors;
+    }
+
+    public void addBenefactor(User user) {
+        benefactors.add(user);
+    }
+
+    public double getIndividualShare() {
+        return individualShare;
+    }
+
+    public double calculateIndividualShare() {
+        return individualShare = amount / benefactors.size();
     }
 }
