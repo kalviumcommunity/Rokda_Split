@@ -17,14 +17,6 @@ public class Group {
     }
 
     // Getters for attributes
-    public void addMember(User user) {
-        members.add(user);
-    }
-
-    public void addExpense(Expense expense) {
-        expenses.add(expense);
-    }
-
     public int getGroupId() {
         return groupId;
     }
@@ -45,7 +37,15 @@ public class Group {
         return members;
     }
 
+    public void addMember(User user) {
+        members.add(user);
+    }
+
     public List<Expense> getExpenses() {
         return expenses;
+    }
+
+    public void addExpense(Expense expense) {
+        expenses.add(expense);
     }
 }
