@@ -1,6 +1,7 @@
 package src.main.java;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Rokda_Split {
         public static void main(String[] args) {
@@ -44,28 +45,41 @@ public class Rokda_Split {
 
                 // Print user, group, and expense details
                 System.out.println("Users: " + Arrays.asList(user1, user2, user3));
-                System.out.println("Group 1: " + cafeGroup.getName());
+                System.out.println();
+
+                System.out.println("Group 1: " + cafeGroup.getName() + ", Members: " + cafeGroup.getMembers());
+                System.out.println();
+
                 System.out.println("Expense 1: " + expense1.getDescription() + ", Paid by: "
-                                + expense1.getPaidBy().getName() + " No. of Benefactors: "
-                                + expense1.getBenefactors().size()
-                                + ", Individual share: "
-                                + expense1.getIndividualShare());
+                                + expense1.getPaidBy().getName() + ", Benefactors: " +
+                                expense1.getBenefactors()
+                                + ", Individual share: " + expense1.getIndividualShare());
+                System.out.println();
+
                 System.out.println("Expense 2: " + expense2.getDescription() + ", Paid by: "
-                                + expense2.getPaidBy().getName() + " No. of Benefactors: "
-                                + expense2.getBenefactors().size()
-                                + ", Individual share: "
-                                + expense2.getIndividualShare());
+                                + expense2.getPaidBy().getName() + ", Benefactors: " +
+                                expense2.getBenefactors()
+                                + ", Individual share: " + expense2.getIndividualShare());
+                System.out.println();
+
                 System.out.println("Expense 3: " + expense3.getDescription() + ", Paid by: "
-                                + expense3.getPaidBy().getName() + " No. of Benefactors: "
-                                + expense3.getBenefactors().size()
-                                + ", Individual share: "
-                                + expense3.getIndividualShare());
+                                + expense3.getPaidBy().getName() + ", Benefactors: " +
+                                expense3.getBenefactors()
+                                + ", Individual share: " + expense3.getIndividualShare());
+                System.out.println();
+
                 System.out.println("Expense 4: " + expense4.getDescription() + ", Paid by: "
-                                + expense4.getPaidBy().getName() + " No. of Benefactors: "
-                                + expense4.getBenefactors().size()
-                                + ", Individual share: "
-                                + expense4.getIndividualShare());
+                                + expense4.getPaidBy().getName() + ", Benefactors: " +
+                                expense4.getBenefactors()
+                                + ", Individual share: " + expense4.getIndividualShare());
+                System.out.println();
 
                 System.out.println("Compiled Successfully!");
+        }
+
+        public static <T> void printList(List<T> list) {
+                for (T item : list) {
+                        System.out.println(item + "\n");
+                }
         }
 }

@@ -2,6 +2,7 @@ package src.main.java;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Group {
     private int groupId;
@@ -16,7 +17,7 @@ public class Group {
         this.expenses = new ArrayList<>();
     }
 
-    // Getters for attributes
+    // Getters and setters
     public int getGroupId() {
         return groupId;
     }
@@ -47,5 +48,12 @@ public class Group {
 
     public void addExpense(Expense expense) {
         expenses.add(expense);
+    }
+
+    // toString method to print group details
+    @Override
+    public String toString() {
+        List<String> memberNames = members.stream().map(User::getName).collect(Collectors.toList());
+        return String.format("Group{id=%d, name='%s', members=%s, expenses=%s}", groupId, name, memberNames, expenses);
     }
 }

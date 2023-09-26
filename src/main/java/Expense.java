@@ -2,6 +2,7 @@ package src.main.java;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Expense {
     private int expenseId;
@@ -21,6 +22,7 @@ public class Expense {
         this.benefactors = new ArrayList<>();
     }
 
+    // Getters and Setters
     public int getExpenseId() {
         return expenseId;
     }
@@ -75,5 +77,15 @@ public class Expense {
 
     public double calculateIndividualShare() {
         return individualShare = amount / benefactors.size();
+    }
+
+    // toString method to print expense details
+    @Override
+    public String toString() {
+        List<String> benefactorNames = benefactors.stream().map(User::getName).collect(Collectors.toList());
+        return String.format(
+                "Expense{id=%d, description='%s', amount=%.2f, paidBy=%s, group=%s, benefactors=%s, individualShare=%.2f}",
+                expenseId, description, amount, paidBy.getName(), group.getName(), benefactorNames,
+                individualShare = getIndividualShare());
     }
 }

@@ -11,7 +11,7 @@ public class User {
         this.email = email;
     }
 
-    // Getters and setters for attribute
+    // Getters and setters
     public int getUserId() {
         return userId;
     }
@@ -34,5 +34,11 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    // toString method to print user details
+    @Override
+    public String toString() {
+        return String.format("%s", name);
     }
 }
