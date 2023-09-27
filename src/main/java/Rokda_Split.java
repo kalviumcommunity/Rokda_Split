@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Rokda_Split {
         public static void main(String[] args) {
-                System.out.println("____________________________________________________");
-
                 // Create user objects
                 User mike = new User(4, "Mike", "mike@example.com");
                 User wili = new User(5, "William", "wili@example.com");
@@ -54,7 +52,7 @@ public class Rokda_Split {
                 }
 
                 // Print user, group, and expense details
-                System.out.println("Users: " + Arrays.asList(user1, user2, user3));
+                System.out.println("Users: " + Arrays.asList(mike, frank, wili, ron));
                 System.out.println();
 
                 System.out.println("Group 1: " + dinnerGroup.getName() + ", Members: " + dinnerGroup.getMembers());
