@@ -20,6 +20,22 @@ public class Expense {
         this.paidBy = paidBy;
         this.group = group;
         this.benefactors = new ArrayList<>();
+
+        // Update pending payments for each benefactor
+        // double sharePerBenefactor = amount / benefactors.size();
+    }
+
+    public void updatePendingPayment() {
+        for (User benefactor : benefactors) {
+            if (!benefactor.equals(paidBy)) {
+                if (benefactor.getPendingPayments().containsKey(paidBy)) {
+                    double oldAmount = benefactor.getPendingPayments().get(paidBy);
+                    benefactor.getPendingPayments().put(paidBy, oldAmount + this.getIndividualShare());
+                } else {
+                    benefactor.getPendingPayments().put(paidBy, this.getIndividualShare());
+                }
+            }
+        }
     }
 
     // Getters and Setters

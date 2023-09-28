@@ -46,6 +46,11 @@ public class Rokda_Split {
                 dinnerGroup.addExpense(newExpense3);
                 dinnerGroup.addExpense(newExpense4);
 
+                newExpense1.updatePendingPayment();
+                newExpense2.updatePendingPayment();
+                newExpense3.updatePendingPayment();
+                newExpense4.updatePendingPayment();
+
                 // Calculate individual shares for each expense
                 for (Expense expense : Arrays.asList(newExpense1, newExpense2)) {
                         expense.calculateIndividualShare();
@@ -81,6 +86,18 @@ public class Rokda_Split {
                                 newExpense4.getBenefactors()
                                 + ", Individual share: " + newExpense4.getIndividualShare());
                 System.out.println();
+
+                System.out.println("Pending payments for Mike: ");
+                mike.displayPendingPayments();
+                
+                System.out.println("Pending payments for Frankline: ");
+                frank.displayPendingPayments();
+                
+                System.out.println("Pending payments for William: ");
+                wili.displayPendingPayments();
+
+                System.out.println("Pending payments for Ron: ");
+                ron.displayPendingPayments();
 
                 System.out.println("Compiled Successfully!");
         }
