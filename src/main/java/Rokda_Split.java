@@ -66,25 +66,25 @@ public class Rokda_Split {
                 System.out.println("Expense 1: " + newExpense1.getDescription() + ", Paid by: "
                                 + newExpense1.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense1.getBenefactors()
-                                + ", Individual share: " + newExpense1.getIndividualShare());
+                                + ", Individual share: " + newExpense1.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 2: " + newExpense2.getDescription() + ", Paid by: "
                                 + newExpense2.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense2.getBenefactors()
-                                + ", Individual share: " + newExpense2.getIndividualShare());
+                                + ", Individual share: " + newExpense2.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 3: " + newExpense3.getDescription() + ", Paid by: "
                                 + newExpense3.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense3.getBenefactors()
-                                + ", Individual share: " + newExpense3.getIndividualShare());
+                                + ", Individual share: " + newExpense3.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 4: " + newExpense4.getDescription() + ", Paid by: "
                                 + newExpense4.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense4.getBenefactors()
-                                + ", Individual share: " + newExpense4.getIndividualShare());
+                                + ", Individual share: " + newExpense4.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Pending payments for Mike: ");
