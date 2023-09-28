@@ -20,6 +20,7 @@ public class Expense {
         this.paidBy = paidBy;
         this.group = group;
         this.benefactors = new ArrayList<>();
+        this.individualShare=calculateIndividualShare();
     }
 
     // Getters and Setters
@@ -71,10 +72,6 @@ public class Expense {
         benefactors.add(user);
     }
 
-    public double getIndividualShare() {
-        return individualShare = calculateIndividualShare();
-    }
-
     public double calculateIndividualShare() {
         return individualShare = amount / benefactors.size();
     }
@@ -86,6 +83,6 @@ public class Expense {
         return String.format(
                 "Expense{id=%d, description='%s', amount=%.2f, paidBy=%s, group=%s, benefactors=%s, individualShare=%.2f}",
                 expenseId, description, amount, paidBy.getName(), group.getName(), benefactorNames,
-                individualShare = getIndividualShare());
+                individualShare = calculateIndividualShare());
     }
 }

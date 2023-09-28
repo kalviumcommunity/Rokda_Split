@@ -53,25 +53,25 @@ public class Rokda_Split {
                 System.out.println("Expense 1: " + expense1.getDescription() + ", Paid by: "
                                 + expense1.getPaidBy().getName() + ", Benefactors: " +
                                 expense1.getBenefactors()
-                                + ", Individual share: " + expense1.getIndividualShare());
+                                + ", Individual share: " + expense1.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 2: " + expense2.getDescription() + ", Paid by: "
                                 + expense2.getPaidBy().getName() + ", Benefactors: " +
                                 expense2.getBenefactors()
-                                + ", Individual share: " + expense2.getIndividualShare());
+                                + ", Individual share: " + expense2.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 3: " + expense3.getDescription() + ", Paid by: "
                                 + expense3.getPaidBy().getName() + ", Benefactors: " +
                                 expense3.getBenefactors()
-                                + ", Individual share: " + expense3.getIndividualShare());
+                                + ", Individual share: " + expense3.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 4: " + expense4.getDescription() + ", Paid by: "
                                 + expense4.getPaidBy().getName() + ", Benefactors: " +
                                 expense4.getBenefactors()
-                                + ", Individual share: " + expense4.getIndividualShare());
+                                + ", Individual share: " + expense4.calculateIndividualShare());
                 System.out.println();
                 
                 System.out.println("____________________________________________________");
@@ -132,25 +132,25 @@ public class Rokda_Split {
                 System.out.println("Expense 1: " + newExpense1.getDescription() + ", Paid by: "
                                 + newExpense1.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense1.getBenefactors()
-                                + ", Individual share: " + newExpense1.getIndividualShare());
+                                + ", Individual share: " + newExpense1.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 2: " + newExpense2.getDescription() + ", Paid by: "
                                 + newExpense2.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense2.getBenefactors()
-                                + ", Individual share: " + newExpense2.getIndividualShare());
+                                + ", Individual share: " + newExpense2.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 3: " + newExpense3.getDescription() + ", Paid by: "
                                 + newExpense3.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense3.getBenefactors()
-                                + ", Individual share: " + newExpense3.getIndividualShare());
+                                + ", Individual share: " + newExpense3.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Expense 4: " + newExpense4.getDescription() + ", Paid by: "
                                 + newExpense4.getPaidBy().getName() + ", Benefactors: " +
                                 newExpense4.getBenefactors()
-                                + ", Individual share: " + newExpense4.getIndividualShare());
+                                + ", Individual share: " + newExpense4.calculateIndividualShare());
                 System.out.println();
 
                 System.out.println("Compiled Successfully!");
