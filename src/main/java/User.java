@@ -57,7 +57,7 @@ public class User {
         for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
             User user = entry.getKey();
             Double amount = entry.getValue();
-            System.out.println("User: " + user.getName() + ", Amount: " + amount);
+            System.out.println("\t" + user.getName() + " : " + amount);
         }
     }
 
@@ -67,32 +67,8 @@ public class User {
     }
 
     // toString method to print user details
-    // @Override
-    // public String toString() {
-    // return String.format("%s", name);
-    // }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("name='%s', pendingPayments={ \n", name));
-        for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
-            sb.append(String.format("%s=%.2f, ", entry.getKey().getName(),
-                    entry.getValue()));
-        }
-        sb.append("}}");
-        return sb.toString();
+        return String.format("%s", name);
     }
-
-    // @Override
-    // public String toString() {
-    // StringBuilder sb = new StringBuilder();
-    // sb.append("{");
-    // for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
-    // sb.append(String.format("%s=%.2f, ", entry.getKey().getName(),
-    // entry.getValue()));
-    // }
-    // sb.append("}");
-    // return sb.toString();
-    // }
 }

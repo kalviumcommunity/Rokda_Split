@@ -57,52 +57,58 @@ public class Rokda_Split {
                 }
 
                 // Print user, group, and expense details
-                System.out.println("Users: " + Arrays.asList(mike, frank, wili, ron));
+                System.out.println("Users:");
+                printUsers(Arrays.asList(mike, frank, wili, ron));
                 System.out.println();
 
                 System.out.println("Group 1: " + dinnerGroup.getName() + ", Members: " + dinnerGroup.getMembers());
                 System.out.println();
 
-                System.out.println("Expense 1: " + newExpense1.getDescription() + ", Paid by: "
-                                + newExpense1.getPaidBy().getName() + ", Benefactors: " +
-                                newExpense1.getBenefactors()
-                                + ", Individual share: " + newExpense1.calculateIndividualShare());
-                System.out.println();
-
-                System.out.println("Expense 2: " + newExpense2.getDescription() + ", Paid by: "
-                                + newExpense2.getPaidBy().getName() + ", Benefactors: " +
-                                newExpense2.getBenefactors()
-                                + ", Individual share: " + newExpense2.calculateIndividualShare());
-                System.out.println();
-
-                System.out.println("Expense 3: " + newExpense3.getDescription() + ", Paid by: "
-                                + newExpense3.getPaidBy().getName() + ", Benefactors: " +
-                                newExpense3.getBenefactors()
-                                + ", Individual share: " + newExpense3.calculateIndividualShare());
-                System.out.println();
-
-                System.out.println("Expense 4: " + newExpense4.getDescription() + ", Paid by: "
-                                + newExpense4.getPaidBy().getName() + ", Benefactors: " +
-                                newExpense4.getBenefactors()
-                                + ", Individual share: " + newExpense4.calculateIndividualShare());
+                System.out.println("Expenses:");
+                printExpense(newExpense1);
+                printExpense(newExpense2);
+                printExpense(newExpense3);
+                printExpense(newExpense4);
                 System.out.println();
 
                 System.out.println("Pending payments for Mike: ");
                 mike.displayPendingPayments();
+                System.out.println();
 
                 System.out.println("Pending payments for Frankline: ");
                 frank.displayPendingPayments();
+                System.out.println();
 
                 System.out.println("Pending payments for William: ");
                 wili.displayPendingPayments();
+                System.out.println();
 
                 System.out.println("Pending payments for Ron: ");
                 ron.displayPendingPayments();
+                System.out.println();
 
                 System.out.println("User count: " + User.getUserCount());
                 System.out.println("Group count: " + Group.getGroupCount());
-
                 System.out.println("Compiled Successfully!");
+        }
+
+        // Helper methods to format and print users and expenses
+        private static void printUsers(List<User> users) {
+                for (User user : users) {
+                        System.out.println("User ID: " + user.getUserId());
+                        System.out.println("Name: " + user.getName());
+                        System.out.println("Email: " + user.getEmail());
+                        System.out.println();
+                }
+        }
+
+        private static void printExpense(Expense expense) {
+                System.out.println("Expense ID: " + expense.getExpenseId());
+                System.out.println("Description: " + expense.getDescription());
+                System.out.println("Paid by: " + expense.getPaidBy().getName());
+                System.out.println("Benefactors: " + expense.getBenefactors());
+                System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
+                System.out.println();
         }
 
         public static <T> void printList(List<T> list) {
