@@ -89,15 +89,18 @@ public class Rokda_Split {
 
                 System.out.println("Pending payments for Mike: ");
                 mike.displayPendingPayments();
-                
+
                 System.out.println("Pending payments for Frankline: ");
                 frank.displayPendingPayments();
-                
+
                 System.out.println("Pending payments for William: ");
                 wili.displayPendingPayments();
 
                 System.out.println("Pending payments for Ron: ");
                 ron.displayPendingPayments();
+
+                System.out.println("User count: " + User.getUserCount());
+                System.out.println("Group count: " + Group.getGroupCount());
 
                 System.out.println("Compiled Successfully!");
         }

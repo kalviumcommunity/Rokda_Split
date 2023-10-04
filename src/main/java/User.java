@@ -9,11 +9,14 @@ public class User {
     private String email;
     private Map<User, Double> pendingPayments;
 
+    private static int userCount = 0;
+
     public User(int userId, String name, String email) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.pendingPayments = new HashMap<>();
+        userCount++;
     }
 
     // Getters and setters
@@ -58,6 +61,11 @@ public class User {
         }
     }
 
+    // Getter for userCount
+    public static int getUserCount() {
+        return userCount;
+    }
+
     // toString method to print user details
     // @Override
     // public String toString() {
@@ -66,24 +74,25 @@ public class User {
 
     @Override
     public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append(String.format("name='%s', pendingPayments={ \n", name));
-    for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
-    sb.append(String.format("%s=%.2f, ", entry.getKey().getName(),
-    entry.getValue()));
-    }
-    sb.append("}}");
-    return sb.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("name='%s', pendingPayments={ \n", name));
+        for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
+            sb.append(String.format("%s=%.2f, ", entry.getKey().getName(),
+                    entry.getValue()));
+        }
+        sb.append("}}");
+        return sb.toString();
     }
 
     // @Override
     // public String toString() {
-    //     StringBuilder sb = new StringBuilder();
-    //     sb.append("{");
-    //     for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
-    //         sb.append(String.format("%s=%.2f, ", entry.getKey().getName(), entry.getValue()));
-    //     }
-    //     sb.append("}");
-    //     return sb.toString();
+    // StringBuilder sb = new StringBuilder();
+    // sb.append("{");
+    // for (Map.Entry<User, Double> entry : pendingPayments.entrySet()) {
+    // sb.append(String.format("%s=%.2f, ", entry.getKey().getName(),
+    // entry.getValue()));
+    // }
+    // sb.append("}");
+    // return sb.toString();
     // }
 }

@@ -10,11 +10,14 @@ public class Group {
     private List<User> members;
     private List<Expense> expenses;
 
+    private static int groupCount = 0;
+
     public Group(int groupId, String name) {
         this.groupId = groupId;
         this.name = name;
         this.members = new ArrayList<>();
         this.expenses = new ArrayList<>();
+        groupCount++;
     }
 
     // Getters and setters
@@ -48,6 +51,11 @@ public class Group {
 
     public void addExpense(Expense expense) {
         expenses.add(expense);
+    }
+
+    // Getter for groupCount
+    public static int getGroupCount() {
+        return groupCount;
     }
 
     // toString method to print group details

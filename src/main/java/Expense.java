@@ -20,7 +20,7 @@ public class Expense {
         this.paidBy = paidBy;
         this.group = group;
         this.benefactors = new ArrayList<>();
-        this.individualShare=calculateIndividualShare();
+        this.individualShare = calculateIndividualShare();
     }
 
     public void updatePendingPayment() {
@@ -34,7 +34,7 @@ public class Expense {
                 }
             }
         }
-       
+
     }
 
     // Getters and Setters
