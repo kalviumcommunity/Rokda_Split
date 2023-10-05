@@ -105,10 +105,4 @@ public class Rokda_Split {
                 System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
                 System.out.println();
         }
-
-        public static <T> void printList(List<T> list) {
-                for (T item : list) {
-                        System.out.println(item + "\n");
-                }
-        }
 }
