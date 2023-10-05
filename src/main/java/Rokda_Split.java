@@ -51,11 +51,6 @@ public class Rokda_Split {
                 newExpense3.updatePendingPayment();
                 newExpense4.updatePendingPayment();
 
-                // Calculate individual shares for each expense
-                for (Expense expense : Arrays.asList(newExpense1, newExpense2)) {
-                        expense.calculateIndividualShare();
-                }
-
                 // Print user, group, and expense details
                 System.out.println("Users:");
                 printUsers(Arrays.asList(mike, frank, wili, ron));
