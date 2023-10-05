@@ -90,7 +90,8 @@ public class Rokda_Split {
                 newExpense1=null;
                 newExpense2=null;
                 newExpense3=null;
-                newExpense4=null;
+                newExpense4=null; // Remove reference to objects
+                // At this point, all these becomes eligible for garbage collection        
                 
                 // Suggest garbage collection (not typically needed)
                 System.gc();
