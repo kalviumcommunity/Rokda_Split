@@ -82,6 +82,19 @@ public class Rokda_Split {
                 ron.displayPendingPayments();
                 System.out.println();
 
+                mike=null;
+                wili=null;
+                frank=null;
+                ron=null;
+                dinnerGroup=null;
+                newExpense1=null;
+                newExpense2=null;
+                newExpense3=null;
+                newExpense4=null;
+                
+                // Suggest garbage collection (not typically needed)
+                System.gc();
+
                 System.out.println("User count: " + User.getUserCount());
                 System.out.println("Group count: " + Group.getGroupCount());
                 System.out.println("Compiled Successfully!");
