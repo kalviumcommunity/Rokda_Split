@@ -21,9 +21,9 @@ public class Rokda_Split {
                 dinnerGroup.addMember(ron);
 
                 // Create payment method objects
-                PaymentMethod creditCard = new CreditCardPayment("1234-5678-9012-3456", "Mike", "12/23", "123");
-                PaymentMethod debitCard = new DebitCardPayment("5678-9012-3456-7890", "William", "12/23", "456");
-                PaymentMethod payPal = new PayPalPayment("mike@example.com", "password");
+                Payment creditCard = new CreditCardPayment("1234-5678-9012-3456", "Mike", "12/23", "123");
+                Payment debitCard = new DebitCardPayment("5678-9012-3456-7890", "William", "12/23", "456");
+                Payment payPal = new PayPalPayment("mike@example.com", "password");
 
                 // Create expense objects with the correct group reference
                 Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup, creditCard);
@@ -122,7 +122,7 @@ public class Rokda_Split {
                 System.out.println("Paid by: " + expense.getPaidBy().getName());
                 System.out.println("Benefactors: " + expense.getBenefactors());
                 System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
-                System.out.println("Payment method: " + expense.getPaymentMethod().getClass().getSimpleName());
+                System.out.println("Payment method: " + expense.getPayment().getClass().getSimpleName());
                 System.out.println();
         }
 }
