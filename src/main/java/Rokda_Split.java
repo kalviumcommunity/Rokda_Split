@@ -20,23 +20,28 @@ public class Rokda_Split {
                 dinnerGroup.addMember(frank);
                 dinnerGroup.addMember(ron);
 
+                // Create payment method objects
+                PaymentMethod creditCard = new CreditCardPayment("1234-5678-9012-3456", "Mike", "12/23", "123");
+                PaymentMethod debitCard = new DebitCardPayment("5678-9012-3456-7890", "William", "12/23", "456");
+                PaymentMethod payPal = new PayPalPayment("mike@example.com", "password");
+
                 // Create expense objects with the correct group reference
-                Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup);
+                Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup, creditCard);
                 newExpense1.addBenefactor(mike);
                 newExpense1.addBenefactor(wili);
                 newExpense1.addBenefactor(frank);
                 newExpense1.addBenefactor(ron);
 
-                Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup);
+                Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup, debitCard);
                 newExpense2.addBenefactor(wili);
                 newExpense2.addBenefactor(frank);
                 newExpense2.addBenefactor(ron);
 
-                Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup);
+                Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup, payPal);
                 newExpense3.addBenefactor(frank);
                 newExpense3.addBenefactor(ron);
 
-                Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup);
+                Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup, creditCard);
                 newExpense4.addBenefactor(wili);
                 newExpense4.addBenefactor(frank);
 
@@ -117,6 +122,7 @@ public class Rokda_Split {
                 System.out.println("Paid by: " + expense.getPaidBy().getName());
                 System.out.println("Benefactors: " + expense.getBenefactors());
                 System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
+                System.out.println("Payment method: " + expense.getPaymentMethod().getClass().getSimpleName());
                 System.out.println();
         }
 }
