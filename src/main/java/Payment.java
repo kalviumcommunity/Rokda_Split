@@ -8,10 +8,12 @@ public abstract class Payment {
 class CreditCardPayment extends Payment {
     private String cardNumber;
     private String expiryDate;
+    private String cardHolderName;
     private String cvv;
 
-    public CreditCardPayment(String cardNumber, String expiryDate, String cvv) {
+    public CreditCardPayment(String cardNumber, String cardHolderName, String expiryDate, String cvv) {
         this.cardNumber = cardNumber;
+        this.cardHolderName = cardHolderName;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
     }
