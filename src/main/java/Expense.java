@@ -11,17 +11,16 @@ class Expense {
     private PaidByUser paidBy;
     private Group group;
     private List<User> benefactors;
-    private ExpenseType expenseType;
+    private double individualShare;
 
-    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group,
-            ExpenseType expenseType) {
+    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group) {
         this.expenseId = expenseId;
         this.description = description;
         this.amount = amount;
         this.paidBy = paidBy;
         this.group = group;
         this.benefactors = new ArrayList<>();
-        this.expenseType = expenseType;
+        this.individualShare = calculateIndividualShare();
     }
 
     public void updatePendingPayment() {
@@ -29,14 +28,13 @@ class Expense {
             if (!benefactor.equals(paidBy)) {
                 if (benefactor.getPendingPayments().containsKey(paidBy)) {
                     double oldAmount = benefactor.getPendingPayments().get(paidBy);
-                    benefactor.getPendingPayments().put(paidBy,
-                            oldAmount + this.expenseType.calculateIndividualShare(amount, benefactors.size()));
+                    benefactor.getPendingPayments().put(paidBy, oldAmount + this.calculateIndividualShare());
                 } else {
-                    benefactor.getPendingPayments().put(paidBy,
-                            this.expenseType.calculateIndividualShare(amount, benefactors.size()));
+                    benefactor.getPendingPayments().put(paidBy, this.calculateIndividualShare());
                 }
             }
         }
+
     }
 
     // Getters and Setters
@@ -88,8 +86,8 @@ class Expense {
         benefactors.add(user);
     }
 
-    public ExpenseType getExpenseType() {
-        return expenseType;
+    public double calculateIndividualShare() {
+        return individualShare = amount / benefactors.size();
     }
 
     // toString method to print expense details
@@ -99,6 +97,6 @@ class Expense {
         return String.format(
                 "Expense{id=%d, description='%s', amount=%.2f, paidBy=%s, group=%s, benefactors=%s, individualShare=%.2f}",
                 expenseId, description, amount, paidBy.getName(), group.getName(), benefactorNames,
-                expenseType.calculateIndividualShare(amount, benefactors.size()));
+                individualShare = calculateIndividualShare());
     }
 }

@@ -20,27 +20,23 @@ public class Rokda_Split {
                 dinnerGroup.addMember(frank);
                 dinnerGroup.addMember(ron);
 
-                // Create expense type objects
-                ExpenseType equalExpenseType = new EqualExpenseType();
-                ExpenseType unequalExpenseType = new UnequalExpenseType(new double[] { 1.0, 2.0, 1.5 });
-
                 // Create expense objects with the correct group reference and expense type
-                Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup, equalExpenseType);
+                Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup);
                 newExpense1.addBenefactor(mike);
                 newExpense1.addBenefactor(wili);
                 newExpense1.addBenefactor(frank);
                 newExpense1.addBenefactor(ron);
 
-                Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup, equalExpenseType);
+                Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup);
                 newExpense2.addBenefactor(wili);
                 newExpense2.addBenefactor(frank);
                 newExpense2.addBenefactor(ron);
 
-                Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup, unequalExpenseType);
+                Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup);
                 newExpense3.addBenefactor(frank);
                 newExpense3.addBenefactor(ron);
 
-                Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup, unequalExpenseType);
+                Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup);
                 newExpense4.addBenefactor(wili);
                 newExpense4.addBenefactor(frank);
 
@@ -109,8 +105,7 @@ public class Rokda_Split {
                 System.out.println("Description: " + expense.getDescription());
                 System.out.println("Paid by: " + expense.getPaidBy().getName());
                 System.out.println("Benefactors: " + expense.getBenefactors());
-                System.out.println("Individual share: " + String.format("%.2f", expense.getExpenseType()
-                                .calculateIndividualShare(expense.getAmount(), expense.getBenefactors().size())));
+                System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
                 System.out.println();
         }
 }
