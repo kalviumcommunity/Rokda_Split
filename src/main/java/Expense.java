@@ -13,7 +13,8 @@ class Expense implements Notification {
     private List<User> benefactors;
     private ExpenseType expenseType;
 
-    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group, ExpenseType expenseType) {
+    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group,
+            ExpenseType expenseType) {
         this.expenseId = expenseId;
         this.description = description;
         this.amount = amount;
@@ -28,9 +29,11 @@ class Expense implements Notification {
             if (!benefactor.equals(paidBy)) {
                 if (benefactor.getPendingPayments().containsKey(paidBy)) {
                     double oldAmount = benefactor.getPendingPayments().get(paidBy);
-                    benefactor.getPendingPayments().put(paidBy, oldAmount + this.expenseType.calculateIndividualShare(amount, benefactors.size()));
+                    benefactor.getPendingPayments().put(paidBy,
+                            oldAmount + this.expenseType.calculateIndividualShare(amount, benefactors.size()));
                 } else {
-                    benefactor.getPendingPayments().put(paidBy, this.expenseType.calculateIndividualShare(amount, benefactors.size()));
+                    benefactor.getPendingPayments().put(paidBy,
+                            this.expenseType.calculateIndividualShare(amount, benefactors.size()));
                 }
             }
         }
