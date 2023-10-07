@@ -85,12 +85,20 @@ public class Rokda_Split {
                 // Payments made by users
                 Payment wiliCashPayment = new CashPayment(wili);
                 Payment ronUPIPayment = new UPIPayment("ron@ybl", ron);
-                wiliCashPayment.makePayment(mike, 875.0);
-                ronUPIPayment.makePayment(wili, 176.66666666666666);
+
+                int wili_payment_id = wiliCashPayment.makePayment(mike, 875.0);
+                int ron_payment_id = ronUPIPayment.makePayment(wili, 176.66666666666666);
+
                 System.out.println("William's Cash Balance: " + wili.getCashBalance());
                 System.out.println("Mike's Cash Balance: " + mike.getCashBalance());
                 System.out.println("Ron's UPI Balance: " + ron.getUPIBalance());
                 System.out.println("William's UPI Balance: " + wili.getUPIBalance());
+                System.out.println();
+
+                System.out.println("Payment status for William's payment: "
+                                + wiliCashPayment.getPaymentStatus(wili_payment_id));
+                System.out.println(
+                                "Payment status for Ron's payment: " + ronUPIPayment.getPaymentStatus(ron_payment_id));
                 System.out.println();
 
                 // Remove references to objects

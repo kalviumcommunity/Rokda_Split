@@ -21,13 +21,14 @@ class CashPayment extends Payment {
 
     @Override
     public int makePayment(User payee, double amount) {
+        paymentId++;
         if (payer.getCashBalance() >= amount) {
             payer.setCashBalance(payer.getCashBalance() - amount);
             payee.setCashBalance(payee.getCashBalance() + amount);
-            paymentHistory.put(paymentId++, true);
+            paymentHistory.put(paymentId, true);
         } else {
             System.out.println("Insufficient balance");
-            paymentHistory.put(paymentId++, false);
+            paymentHistory.put(paymentId, false);
         }
 
         return paymentId;
@@ -53,13 +54,14 @@ class UPIPayment extends Payment {
 
     @Override
     public int makePayment(User payee, double amount) {
+        paymentId++;
         if (payer.getUPIBalance() >= amount) {
             payer.setUPIBalance(payer.getUPIBalance() - amount);
             payee.setUPIBalance(payee.getUPIBalance() + amount);
-            paymentHistory.put(paymentId++, true);
+            paymentHistory.put(paymentId, true);
         } else {
             System.out.println("Insufficient balance");
-            paymentHistory.put(paymentId++, false);
+            paymentHistory.put(paymentId, false);
         }
 
         return paymentId;
