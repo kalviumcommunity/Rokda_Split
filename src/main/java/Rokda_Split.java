@@ -11,6 +11,11 @@ public class Rokda_Split {
                 PaidByUser frank = new PaidByUser(6, "Frankline", "frank@example.com", 0, 4000, "PhonePe");
                 PaidByUser ron = new PaidByUser(6, "Ron", "ron@example.com", 400, 3514, "Paytm");
 
+                // Print user details
+                System.out.println("Users:");
+                printUsers(Arrays.asList(mike, frank, wili, ron));
+                System.out.println();
+
                 // Create group objects
                 Group dinnerGroup = new Group(102, "Weekend Dinner with friends");
 
@@ -20,23 +25,31 @@ public class Rokda_Split {
                 dinnerGroup.addMember(frank);
                 dinnerGroup.addMember(ron);
 
+                // Print group details
+                System.out.println("Group 1: " + dinnerGroup.getName() + ", Members: " + dinnerGroup.getMembers());
+                System.out.println();
+
                 // Create expense objects with the correct group reference and expense type
                 Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup);
+                newExpense1.sendNotification("New expense added: " + newExpense1.getDescription() + "\n");
                 newExpense1.addBenefactor(mike);
                 newExpense1.addBenefactor(wili);
                 newExpense1.addBenefactor(frank);
                 newExpense1.addBenefactor(ron);
 
                 Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup);
+                newExpense2.sendNotification("New expense added: " + newExpense2.getDescription() + "\n");
                 newExpense2.addBenefactor(wili);
                 newExpense2.addBenefactor(frank);
                 newExpense2.addBenefactor(ron);
 
                 Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup);
+                newExpense3.sendNotification("New expense added: " + newExpense3.getDescription() + "\n");
                 newExpense3.addBenefactor(frank);
                 newExpense3.addBenefactor(ron);
 
                 Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup);
+                newExpense4.sendNotification("New expense added: " + newExpense4.getDescription() + "\n");
                 newExpense4.addBenefactor(wili);
                 newExpense4.addBenefactor(frank);
 
@@ -51,21 +64,15 @@ public class Rokda_Split {
                 newExpense3.updatePendingPayment();
                 newExpense4.updatePendingPayment();
 
-                // Print user, group, and expense details
-                System.out.println("Users:");
-                printUsers(Arrays.asList(mike, frank, wili, ron));
-                System.out.println();
+                // Print expense details
+                // System.out.println("Expenses:");
+                // printExpense(newExpense1);
+                // printExpense(newExpense2);
+                // printExpense(newExpense3);
+                // printExpense(newExpense4);
+                // System.out.println();
 
-                System.out.println("Group 1: " + dinnerGroup.getName() + ", Members: " + dinnerGroup.getMembers());
-                System.out.println();
-
-                System.out.println("Expenses:");
-                printExpense(newExpense1);
-                printExpense(newExpense2);
-                printExpense(newExpense3);
-                printExpense(newExpense4);
-                System.out.println();
-
+                // Print pending payments
                 System.out.println("Pending payments for Mike: ");
                 mike.displayPendingPayments();
                 System.out.println();
@@ -116,6 +123,7 @@ public class Rokda_Split {
                 // Suggest garbage collection (not typically needed)
                 System.gc();
 
+                // Print user and group count
                 System.out.println("User count: " + User.getUserCount());
                 System.out.println("Group count: " + Group.getGroupCount());
                 System.out.println("Compiled Successfully!");
