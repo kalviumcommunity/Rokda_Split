@@ -6,10 +6,10 @@ import java.util.List;
 public class Rokda_Split {
         public static void main(String[] args) {
                 // Create user objects
-                User mike = new User(4, "Mike", "mike@example.com");
-                User wili = new User(5, "William", "wili@example.com");
-                User frank = new User(6, "Frankline", "frank@example.com");
-                User ron = new User(6, "Ron", "ron@example.com");
+                PaidByUser mike = new PaidByUser(4, "Mike", "mike@example.com", "PaymentMethodForMike");
+                PaidByUser wili = new PaidByUser(5, "William", "wili@example.com", "PaymentMethodForWilliam");
+                PaidByUser frank = new PaidByUser(6, "Frankline", "frank@example.com", "PaymentMethodForFrankline");
+                PaidByUser ron = new PaidByUser(6, "Ron", "ron@example.com", "PaymentMethodForRon");
 
                 // Create group objects
                 Group dinnerGroup = new Group(102, "Weekend Dinner with friends");
@@ -20,28 +20,27 @@ public class Rokda_Split {
                 dinnerGroup.addMember(frank);
                 dinnerGroup.addMember(ron);
 
-                // Create payment method objects
-                Payment creditCard = new CreditCardPayment("1234-5678-9012-3456", "Mike", "12/23", "123");
-                Payment debitCard = new DebitCardPayment("5678-9012-3456-7890", "William", "12/23", "456");
-                Payment payPal = new PayPalPayment("mike@example.com", "password");
+                // Create expense type objects
+                ExpenseType equalExpenseType = new EqualExpenseType();
+                ExpenseType unequalExpenseType = new UnequalExpenseType(new double[] { 1.0, 2.0, 1.5 });
 
-                // Create expense objects with the correct group reference
-                Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup, creditCard);
+                // Create expense objects with the correct group reference and expense type
+                Expense newExpense1 = new Expense(1005, "Pizza", 3500.0, mike, dinnerGroup, equalExpenseType);
                 newExpense1.addBenefactor(mike);
                 newExpense1.addBenefactor(wili);
                 newExpense1.addBenefactor(frank);
                 newExpense1.addBenefactor(ron);
 
-                Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup, debitCard);
+                Expense newExpense2 = new Expense(1006, "Cold Drink", 530.0, wili, dinnerGroup, equalExpenseType);
                 newExpense2.addBenefactor(wili);
                 newExpense2.addBenefactor(frank);
                 newExpense2.addBenefactor(ron);
 
-                Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup, payPal);
+                Expense newExpense3 = new Expense(1007, "Coco Shake", 350.0, ron, dinnerGroup, unequalExpenseType);
                 newExpense3.addBenefactor(frank);
                 newExpense3.addBenefactor(ron);
 
-                Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup, creditCard);
+                Expense newExpense4 = new Expense(1008, "Ice Cream", 100.0, ron, dinnerGroup, unequalExpenseType);
                 newExpense4.addBenefactor(wili);
                 newExpense4.addBenefactor(frank);
 
@@ -87,17 +86,6 @@ public class Rokda_Split {
                 ron.displayPendingPayments();
                 System.out.println();
 
-                mike=null;
-                wili=null;
-                frank=null;
-                ron=null;
-                dinnerGroup=null;
-                newExpense1=null;
-                newExpense2=null;
-                newExpense3=null;
-                newExpense4=null; // Remove reference to objects
-                // At this point, all these becomes eligible for garbage collection        
-                
                 // Suggest garbage collection (not typically needed)
                 System.gc();
 
@@ -121,8 +109,8 @@ public class Rokda_Split {
                 System.out.println("Description: " + expense.getDescription());
                 System.out.println("Paid by: " + expense.getPaidBy().getName());
                 System.out.println("Benefactors: " + expense.getBenefactors());
-                System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
-                System.out.println("Payment method: " + expense.getPayment().getClass().getSimpleName());
+                System.out.println("Individual share: " + String.format("%.2f", expense.getExpenseType()
+                                .calculateIndividualShare(expense.getAmount(), expense.getBenefactors().size())));
                 System.out.println();
         }
 }

@@ -1,8 +1,8 @@
 package src.main.java;
 
-public interface Notification {
-    public void sendNotification(String message);
-}
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Expense implements Notification {
     private int expenseId;
@@ -13,7 +13,8 @@ class Expense implements Notification {
     private List<User> benefactors;
     private ExpenseType expenseType;
 
-    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group, ExpenseType expenseType) {
+    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group,
+            ExpenseType expenseType) {
         this.expenseId = expenseId;
         this.description = description;
         this.amount = amount;
@@ -28,9 +29,11 @@ class Expense implements Notification {
             if (!benefactor.equals(paidBy)) {
                 if (benefactor.getPendingPayments().containsKey(paidBy)) {
                     double oldAmount = benefactor.getPendingPayments().get(paidBy);
-                    benefactor.getPendingPayments().put(paidBy, oldAmount + this.expenseType.calculateIndividualShare(amount, benefactors.size()));
+                    benefactor.getPendingPayments().put(paidBy,
+                            oldAmount + this.expenseType.calculateIndividualShare(amount, benefactors.size()));
                 } else {
-                    benefactor.getPendingPayments().put(paidBy, this.expenseType.calculateIndividualShare(amount, benefactors.size()));
+                    benefactor.getPendingPayments().put(paidBy,
+                            this.expenseType.calculateIndividualShare(amount, benefactors.size()));
                 }
             }
         }
@@ -85,8 +88,8 @@ class Expense implements Notification {
         benefactors.add(user);
     }
 
-    public void setExpenseType(ExpenseType expenseType) {
-        this.expenseType = expenseType;
+    public ExpenseType getExpenseType() {
+        return expenseType;
     }
 
     // toString method to print expense details
@@ -102,6 +105,6 @@ class Expense implements Notification {
     // Notification method
     @Override
     public void sendNotification(String message) {
-        // Implement notification logic
+        System.out.println("A new notification to all group members: " + message);
     }
 }
