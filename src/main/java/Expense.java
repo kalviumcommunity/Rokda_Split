@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Expense implements Notification {
+class Expense {
     private int expenseId;
     private String description;
     private double amount;
@@ -100,11 +100,5 @@ class Expense implements Notification {
                 "Expense{id=%d, description='%s', amount=%.2f, paidBy=%s, group=%s, benefactors=%s, individualShare=%.2f}",
                 expenseId, description, amount, paidBy.getName(), group.getName(), benefactorNames,
                 expenseType.calculateIndividualShare(amount, benefactors.size()));
-    }
-
-    // Notification method
-    @Override
-    public void sendNotification(String message) {
-        System.out.println("A new notification to all group members: " + message);
     }
 }
