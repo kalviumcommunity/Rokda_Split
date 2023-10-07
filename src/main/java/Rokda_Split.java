@@ -6,10 +6,10 @@ import java.util.List;
 public class Rokda_Split {
         public static void main(String[] args) {
                 // Create user objects
-                PaidByUser mike = new PaidByUser(4, "Mike", "mike@example.com", "PaymentMethodForMike");
-                PaidByUser wili = new PaidByUser(5, "William", "wili@example.com", "PaymentMethodForWilliam");
-                PaidByUser frank = new PaidByUser(6, "Frankline", "frank@example.com", "PaymentMethodForFrankline");
-                PaidByUser ron = new PaidByUser(6, "Ron", "ron@example.com", "PaymentMethodForRon");
+                PaidByUser mike = new PaidByUser(4, "Mike", "mike@example.com", 5000, 3000, "Cash");
+                PaidByUser wili = new PaidByUser(5, "William", "wili@example.com", 2000, 5000, "G Pay");
+                PaidByUser frank = new PaidByUser(6, "Frankline", "frank@example.com", 0, 4000, "PhonePe");
+                PaidByUser ron = new PaidByUser(6, "Ron", "ron@example.com", 400, 3514, "Paytm");
 
                 // Create group objects
                 Group dinnerGroup = new Group(102, "Weekend Dinner with friends");
@@ -81,6 +81,29 @@ public class Rokda_Split {
                 System.out.println("Pending payments for Ron: ");
                 ron.displayPendingPayments();
                 System.out.println();
+
+                // Payments made by users
+                Payment wiliCashPayment = new CashPayment(wili);
+                Payment ronUPIPayment = new UPIPayment("ron@ybl", ron);
+                wiliCashPayment.makePayment(mike, 875.0);
+                ronUPIPayment.makePayment(wili, 176.66666666666666);
+                System.out.println("William's Cash Balance: " + wili.getCashBalance());
+                System.out.println("Mike's Cash Balance: " + mike.getCashBalance());
+                System.out.println("Ron's UPI Balance: " + ron.getUPIBalance());
+                System.out.println("William's UPI Balance: " + wili.getUPIBalance());
+                System.out.println();
+
+                // Remove references to objects
+                mike = null;
+                wili = null;
+                frank = null;
+                ron = null;
+                dinnerGroup = null;
+                newExpense1 = null;
+                newExpense2 = null;
+                newExpense3 = null;
+                newExpense4 = null; // Remove reference to objects
+                // At this point, all these becomes eligible for garbage collection
 
                 // Suggest garbage collection (not typically needed)
                 System.gc();

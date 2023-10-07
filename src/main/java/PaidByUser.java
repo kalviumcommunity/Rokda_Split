@@ -3,8 +3,9 @@ package src.main.java;
 public class PaidByUser extends User {
     private String paymentMethod;
 
-    public PaidByUser(int userId, String name, String email, String paymentMethod) {
-        super(userId, name, email);
+    public PaidByUser(int userId, String name, String email, double CashBalance, double UPIBalance,
+            String paymentMethod) {
+        super(userId, name, email, CashBalance, UPIBalance);
         this.paymentMethod = paymentMethod;
     }
 

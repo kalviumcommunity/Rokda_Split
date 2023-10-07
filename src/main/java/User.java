@@ -8,14 +8,18 @@ public class User {
     private String name;
     private String email;
     private Map<User, Double> pendingPayments;
+    private double CashBalance;
+    private double UPIBalance;
 
     private static int userCount = 0;
 
-    public User(int userId, String name, String email) {
+    public User(int userId, String name, String email, double CashBalance, double UPIBalance) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.pendingPayments = new HashMap<>();
+        this.CashBalance = CashBalance;
+        this.UPIBalance = UPIBalance;
         userCount++;
     }
 
@@ -59,6 +63,22 @@ public class User {
             Double amount = entry.getValue();
             System.out.println("\t" + user.getName() + " : " + amount);
         }
+    }
+
+    public double getCashBalance() {
+        return CashBalance;
+    }
+
+    public void setCashBalance(double CashBalance) {
+        this.CashBalance = CashBalance;
+    }
+
+    public double getUPIBalance() {
+        return UPIBalance;
+    }
+
+    public void setUPIBalance(double UPIBalance) {
+        this.UPIBalance = UPIBalance;
     }
 
     // Getter for userCount

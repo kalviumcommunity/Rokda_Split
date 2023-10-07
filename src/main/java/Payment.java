@@ -1,52 +1,72 @@
 package src.main.java;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Payment {
-    public abstract void makePayment(double amount);
-    public abstract String getPaymentStatus();
+    public abstract int makePayment(User payee, double amount);
+
+    public abstract boolean getPaymentStatus(int paymentId);
 }
 
-class CreditCardPayment extends Payment {
-    private String cardNumber;
-    private String expiryDate;
-    private String cardHolderName;
-    private String cvv;
+class CashPayment extends Payment {
+    private PaidByUser payer;
+    private Map<Integer, Boolean> paymentHistory;
+    private static int paymentId = 0;
 
-    public CreditCardPayment(String cardNumber, String cardHolderName, String expiryDate, String cvv) {
-        this.cardNumber = cardNumber;
-        this.cardHolderName = cardHolderName;
-        this.expiryDate = expiryDate;
-        this.cvv = cvv;
+    public CashPayment(PaidByUser payer) {
+        this.payer = payer;
+        this.paymentHistory = new HashMap<>();
     }
 
     @Override
-    public void makePayment(double amount) {
-        // Implement credit card payment logic
+    public int makePayment(User payee, double amount) {
+        if (payer.getCashBalance() >= amount) {
+            payer.setCashBalance(payer.getCashBalance() - amount);
+            payee.setCashBalance(payee.getCashBalance() + amount);
+            paymentHistory.put(paymentId++, true);
+        } else {
+            System.out.println("Insufficient balance");
+            paymentHistory.put(paymentId++, false);
+        }
+
+        return paymentId;
     }
 
     @Override
-    public String getPaymentStatus() {
-        // Implement credit card payment status logic
-        return "Payment successful";
+    public boolean getPaymentStatus(int paymentId) {
+        return paymentHistory.get(paymentId);
     }
 }
 
-class PayPalPayment extends Payment {
-    private String email;
-    private String password;
+class UPIPayment extends Payment {
+    private String UPI_ID;
+    private PaidByUser payer;
+    private Map<Integer, Boolean> paymentHistory;
+    private static int paymentId = 0;
 
-    public PayPalPayment(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public UPIPayment(String upi_id, PaidByUser payer) {
+        this.UPI_ID = upi_id;
+        this.payer = payer;
+        this.paymentHistory = new HashMap<>();
     }
 
     @Override
-    public void makePayment(double amount) {
-        // Implement PayPal payment logic
+    public int makePayment(User payee, double amount) {
+        if (payer.getUPIBalance() >= amount) {
+            payer.setUPIBalance(payer.getUPIBalance() - amount);
+            payee.setUPIBalance(payee.getUPIBalance() + amount);
+            paymentHistory.put(paymentId++, true);
+        } else {
+            System.out.println("Insufficient balance");
+            paymentHistory.put(paymentId++, false);
+        }
+
+        return paymentId;
     }
 
     @Override
-    public String getPaymentStatus() {
-        // Implement PayPal payment status logic
-        return "Payment successful";
+    public boolean getPaymentStatus(int paymentId) {
+        return paymentHistory.get(paymentId);
     }
 }
