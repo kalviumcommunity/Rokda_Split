@@ -3,13 +3,15 @@ package src.main.java;
 import java.util.Arrays;
 import java.util.List;
 
+import src.main.java.PaidByUser.PaymentMethod;
+
 public class Rokda_Split {
         public static void main(String[] args) {
                 // Create user objects
-                PaidByUser mike = new PaidByUser(4, "Mike", "mike@example.com", 5000, 3000, "Cash");
-                PaidByUser wili = new PaidByUser(5, "William", "wili@example.com", 2000, 5000, "G Pay");
-                PaidByUser frank = new PaidByUser(6, "Frankline", "frank@example.com", 0, 4000, "PhonePe");
-                PaidByUser ron = new PaidByUser(6, "Ron", "ron@example.com", 400, 3514, "Paytm");
+                PaidByUser mike = new PaidByUser(4, "Mike", "mike@example.com", 5000, 3000, PaymentMethod.CASH);
+                PaidByUser wili = new PaidByUser(5, "William", "wili@example.com", 2000, 5000, PaymentMethod.UPI);
+                PaidByUser frank = new PaidByUser(6, "Frankline", "frank@example.com", 0, 4000, PaymentMethod.UPI);
+                PaidByUser ron = new PaidByUser(6, "Ron", "ron@example.com", 400, 3514, PaymentMethod.UPI);
 
                 // Create group objects
                 Group dinnerGroup = new Group(102, "Weekend Dinner with friends");
