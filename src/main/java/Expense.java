@@ -20,7 +20,21 @@ public class Expense {
         this.paidBy = paidBy;
         this.group = group;
         this.benefactors = new ArrayList<>();
-        this.individualShare=calculateIndividualShare();
+        this.individualShare = calculateIndividualShare();
+    }
+
+    public void updatePendingPayment() {
+        for (User benefactor : benefactors) {
+            if (!benefactor.equals(paidBy)) {
+                if (benefactor.getPendingPayments().containsKey(paidBy)) {
+                    double oldAmount = benefactor.getPendingPayments().get(paidBy);
+                    benefactor.getPendingPayments().put(paidBy, oldAmount + this.calculateIndividualShare());
+                } else {
+                    benefactor.getPendingPayments().put(paidBy, this.calculateIndividualShare());
+                }
+            }
+        }
+
     }
 
     // Getters and Setters
