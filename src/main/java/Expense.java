@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Expense {
+class Expense {
     private int expenseId;
     private String description;
     private double amount;
-    private User paidBy;
+    private PaidByUser paidBy;
     private Group group;
     private List<User> benefactors;
     private double individualShare;
 
-    public Expense(int expenseId, String description, double amount, User paidBy, Group group) {
+    public Expense(int expenseId, String description, double amount, PaidByUser paidBy, Group group) {
         this.expenseId = expenseId;
         this.description = description;
         this.amount = amount;
@@ -62,11 +62,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public User getPaidBy() {
+    public PaidByUser getPaidBy() {
         return paidBy;
     }
 
-    public void setPaidBy(User paidBy) {
+    public void setPaidBy(PaidByUser paidBy) {
         this.paidBy = paidBy;
     }
 
