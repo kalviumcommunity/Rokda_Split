@@ -51,11 +51,6 @@ public class Rokda_Split {
                 newExpense3.updatePendingPayment();
                 newExpense4.updatePendingPayment();
 
-                // Calculate individual shares for each expense
-                for (Expense expense : Arrays.asList(newExpense1, newExpense2)) {
-                        expense.calculateIndividualShare();
-                }
-
                 // Print user, group, and expense details
                 System.out.println("Users:");
                 printUsers(Arrays.asList(mike, frank, wili, ron));
@@ -87,6 +82,20 @@ public class Rokda_Split {
                 ron.displayPendingPayments();
                 System.out.println();
 
+                mike=null;
+                wili=null;
+                frank=null;
+                ron=null;
+                dinnerGroup=null;
+                newExpense1=null;
+                newExpense2=null;
+                newExpense3=null;
+                newExpense4=null; // Remove reference to objects
+                // At this point, all these becomes eligible for garbage collection        
+                
+                // Suggest garbage collection (not typically needed)
+                System.gc();
+
                 System.out.println("User count: " + User.getUserCount());
                 System.out.println("Group count: " + Group.getGroupCount());
                 System.out.println("Compiled Successfully!");
@@ -109,11 +118,5 @@ public class Rokda_Split {
                 System.out.println("Benefactors: " + expense.getBenefactors());
                 System.out.println("Individual share: " + String.format("%.2f", expense.calculateIndividualShare()));
                 System.out.println();
-        }
-
-        public static <T> void printList(List<T> list) {
-                for (T item : list) {
-                        System.out.println(item + "\n");
-                }
         }
 }
